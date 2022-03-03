@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+    <head>
+        <title>Nederlands | Taal Zoeken</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="shortcut icon" href="icon.ico"/>
+        <meta charset="UTF-8">
+        <meta name="description" content="Mutli-search tool to make creating flashcards for Dutch language learning easier.">
+        <meta name="author" content="Iarla Crewe">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <main class="container">
+            <p>
+                Typ het Nederlandse woord in waarnaar u wilt zoeken.
+            </p>
+            <input type="text" id="input-box" autofocus required>
+        </main>
+
+        <script>
+            var input = document.getElementById("input-box");
+
+            document.onkeydown = function(key) {search(key)}
+            function search(key)
+            {
+                var word = encodeURIComponent(input.value);
+                if (key.which != 13) return;                    // Only search if enter key pressed
+                if (word == "") return;                         // Search cannot be empty
+                
+                window.open("http://en.bab.la/dictionary/dutch-english/" + word);
+                window.open("http://www.vandale.nl/opzoeken?pattern=" + word + "&lang=nn");
+                window.open("https://forvo.com/word/" + word + "/#nl"); 
+                window.open("http://www.google.nl/search?q=" + word + "&num=10&hl=nl&site=imghp&tbm=isch&sout=1&biw=1242&bih=640");
+
+                input.value = "";
+            }
+        </script>
+    </body>
+</html>
